@@ -1,0 +1,1 @@
+var e=`/assets/flavia-postigo-Cq2OUxzU.jpg`;export{e as t};
