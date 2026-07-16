@@ -1,0 +1,280 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --font-display: "Archivo Narrow", "Oswald", sans-serif;
+  --font-sans: "Manrope", "Montserrat", system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", "Playfair Display", serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-navy: var(--navy);
+  --color-navy-soft: var(--navy-soft);
+  --color-mint: var(--mint);
+  --color-mint-light: var(--mint-light);
+  --color-mint-deep: var(--mint-deep);
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Brand palette */
+  --cream: oklch(0.965 0.018 85); /* #F8F2E8 */
+  --cream-deep: oklch(0.935 0.022 85);
+  --navy: oklch(0.272 0.085 282); /* #26245B */
+  --navy-soft: oklch(0.38 0.075 282);
+  --mint: oklch(0.76 0.12 155);
+  --mint-light: oklch(0.89 0.075 155); /* #B9E2C7 */
+  --mint-deep: oklch(0.67 0.13 152);
+
+  --background: var(--cream);
+  --foreground: var(--navy);
+  --card: oklch(0.99 0.005 85);
+  --card-foreground: var(--navy);
+  --popover: oklch(0.99 0.005 85);
+  --popover-foreground: var(--navy);
+  --primary: var(--mint-deep);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: var(--navy);
+  --secondary-foreground: var(--cream);
+  --muted: var(--cream-deep);
+  --muted-foreground: oklch(0.42 0.04 282);
+  --accent: var(--mint-light);
+  --accent-foreground: var(--navy);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0.005 85);
+  --border: oklch(0.86 0.025 85);
+  --input: oklch(0.88 0.022 85);
+  --ring: var(--mint-deep);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(oklch(0.85 0.03 85 / 0.35) 1px, transparent 1px),
+      radial-gradient(oklch(0.85 0.03 85 / 0.25) 1px, transparent 1px);
+    background-size:
+      28px 28px,
+      56px 56px;
+    background-position:
+      0 0,
+      14px 14px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+    color: var(--navy);
+  }
+
+  ::selection {
+    background: var(--mint);
+    color: var(--navy);
+  }
+}
+
+@utility text-accent-mint {
+  color: var(--mint-deep);
+}
+
+@utility container-fl {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  max-width: 1200px;
+}
+
+@utility eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--mint-deep);
+
+  &::before {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 1px;
+    flex: none;
+    background: currentColor;
+    opacity: 0.85;
+  }
+}
+
+
+@utility texture-paper {
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(circle at 12% 18%, rgb(118 199 146 / 0.24), transparent 24%),
+    radial-gradient(circle at 88% 78%, rgb(38 36 91 / 0.10), transparent 22%),
+    radial-gradient(rgb(38 36 91 / 0.15) 0.8px, transparent 1px),
+    linear-gradient(135deg, rgb(118 199 146 / 0.075) 25%, transparent 25%, transparent 75%, rgb(118 199 146 / 0.075) 75%);
+  background-size: auto, auto, 22px 22px, 44px 44px;
+  background-position: 0 0, 100% 100%, 0 0, 0 0;
+}
+
+@utility texture-paper-soft {
+  background-color: var(--cream-deep);
+  background-image:
+    radial-gradient(circle at 82% 18%, rgb(118 199 146 / 0.24), transparent 24%),
+    radial-gradient(circle at 12% 86%, rgb(38 36 91 / 0.08), transparent 20%),
+    radial-gradient(rgb(38 36 91 / 0.14) 0.8px, transparent 1px),
+    repeating-linear-gradient(135deg, transparent 0 22px, rgb(118 199 146 / 0.09) 22px 23px);
+  background-size: auto, auto, 24px 24px, auto;
+  background-position: 0 0, 0 0, 0 0, 0 0;
+}
+
+@utility texture-dark {
+  background-color: var(--navy);
+  background-image:
+    radial-gradient(circle at 14% 18%, rgb(118 199 146 / 0.19), transparent 23%),
+    radial-gradient(circle at 88% 78%, rgb(185 226 199 / 0.10), transparent 20%),
+    radial-gradient(rgb(185 226 199 / 0.18) 0.75px, transparent 1px),
+    linear-gradient(135deg, rgb(118 199 146 / 0.055) 25%, transparent 25%, transparent 75%, rgb(118 199 146 / 0.055) 75%);
+  background-size: auto, auto, 28px 28px, 56px 56px;
+  background-position: 0 0, 100% 100%, 0 0, 0 0;
+}
+
+@utility surface-pattern-light {
+  @apply texture-paper;
+}
+
+@utility surface-pattern-muted {
+  @apply texture-paper-soft;
+}
+
+@utility surface-pattern-dark {
+  @apply texture-dark;
+}
+
+@utility deco-line {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, var(--mint) 20%, var(--mint) 80%, transparent);
+  }
+}
+
+/* Aplica uma textura visível em todas as seções principais, inclusive nas páginas Sobre e Contato. */
+.site-canvas {
+  background-color: var(--cream);
+}
+
+.site-canvas > section {
+  position: relative;
+  isolation: isolate;
+}
+
+.site-canvas > section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgb(118 199 146 / 0.18), transparent 24%),
+    radial-gradient(circle at 90% 78%, rgb(38 36 91 / 0.07), transparent 22%),
+    radial-gradient(rgb(38 36 91 / 0.13) 0.8px, transparent 1px),
+    linear-gradient(135deg, rgb(118 199 146 / 0.07) 25%, transparent 25%, transparent 75%, rgb(118 199 146 / 0.07) 75%);
+  background-size: auto, auto, 22px 22px, 44px 44px;
+  opacity: 0.9;
+}
+
+.site-canvas > section.bg-navy::before,
+.site-canvas > section.texture-dark::before {
+  background-image:
+    radial-gradient(circle at 12% 18%, rgb(118 199 146 / 0.16), transparent 24%),
+    radial-gradient(circle at 88% 80%, rgb(185 226 199 / 0.08), transparent 22%),
+    radial-gradient(rgb(185 226 199 / 0.16) 0.75px, transparent 1px),
+    linear-gradient(135deg, rgb(118 199 146 / 0.05) 25%, transparent 25%, transparent 75%, rgb(118 199 146 / 0.05) 75%);
+  background-size: auto, auto, 28px 28px, 56px 56px;
+  opacity: 0.8;
+}
+
+/* Mantém o conteúdo acima da textura sem tirar elementos decorativos absolutos do lugar. */
+.site-canvas > section > :not(.absolute) {
+  position: relative;
+  z-index: 1;
+}
+
+.site-canvas > section > .absolute {
+  z-index: 0;
+}
+
+
+
+/* Hero inicial sem o esfumado verde no canto superior esquerdo. */
+.site-canvas > section.hero-clean-surface::before {
+  background-image:
+    radial-gradient(circle at 86% 30%, rgb(118 199 146 / 0.16), transparent 24%),
+    radial-gradient(circle at 74% 82%, rgb(38 36 91 / 0.05), transparent 22%),
+    radial-gradient(rgb(38 36 91 / 0.13) 0.8px, transparent 1px),
+    linear-gradient(135deg, rgb(118 199 146 / 0.07) 25%, transparent 25%, transparent 75%, rgb(118 199 146 / 0.07) 75%);
+  background-size: auto, auto, 22px 22px, 44px 44px;
+  background-position: 100% 0, 100% 100%, 0 0, 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
